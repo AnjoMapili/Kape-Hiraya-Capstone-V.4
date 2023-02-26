@@ -12,7 +12,7 @@ include "templates/sidebar.php";
       ?>
       
         <div class="main-title">
-            <h4>DASHBOARD (Sample Github)</h4>
+            <h4>DASHBOARD</h4>
         </div>
         
         <div class="main-cards">

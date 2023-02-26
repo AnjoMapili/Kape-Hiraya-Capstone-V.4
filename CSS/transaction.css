@@ -1,0 +1,11 @@
+div.scroll {
+  background-color: lightblue;
+  height: 100px;
+  width: 200px;
+  overflow-y: scroll;
+}
+
+select {
+  max-height: 100px;
+  overflow-y: scroll;
+}/*# sourceMappingURL=transaction.css.map */

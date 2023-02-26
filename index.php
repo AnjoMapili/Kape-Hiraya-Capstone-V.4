@@ -22,7 +22,7 @@ include "templates/sidebar.php";
                     <h3>TRANSACTIONS</h3>
                     <span class="material-icons-outlined"> point_of_sale </span>
                 </div>
-                     <h1>249</h1>
+                     <h1 class="transaction-count">249</h1>
                      <a class="small text-white stretched-link" href="Transaction.php">View Details</a> 
             </div>
 
@@ -85,4 +85,5 @@ include "templates/sidebar.php";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js" ></script>
     <!-- Custom JS -->
     <script src="JS/script.js"></script>
+    <script src="JS/dashboard.js"></script>
 

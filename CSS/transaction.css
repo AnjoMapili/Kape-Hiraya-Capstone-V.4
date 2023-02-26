@@ -1,3 +1,41 @@
+.main-container {
+  font-family: "GLOBAL", sans-serif;
+}
+
+.tbl-container {
+  border: 1px solid #656d77;
+  background-color: #2f3a4a;
+  color: #bbb;
+  box-shadow: 0 0.25rem 0.75rem rgb(62, 64, 64) !important;
+  border-radius: 10px;
+}
+
+.tbl-transactions,
+.page {
+  /* color: #bbb; */
+  font-weight: normal;
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+.tbl-transactions th {
+  color: #f3f4f4;
+}
+
+.tbl-transactions td {
+  color: #d1d6dd;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+  color: #09e8e8 !important;
+}
+
 div.scroll {
   background-color: lightblue;
   height: 100px;
@@ -8,4 +46,28 @@ div.scroll {
 select {
   max-height: 100px;
   overflow-y: scroll;
-}/*# sourceMappingURL=transaction.css.map */
+}
+
+.spn-view-transaction {
+  color: #09e8e8;
+  cursor: pointer;
+}
+
+.spn-trash-collection,
+.spn-trash-transaction {
+  color: #dc3545;
+  cursor: pointer;
+}
+
+.ajs-message {
+  color: #fff !important;
+}
+
+#mdl-view-details .dv-head {
+  font-size: 20px;
+  border-bottom: 1px solid #047272;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=transaction.css.map */

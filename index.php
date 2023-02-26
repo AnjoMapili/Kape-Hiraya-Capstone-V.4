@@ -22,7 +22,7 @@ include "templates/sidebar.php";
                     <h3>TRANSACTIONS</h3>
                     <span class="material-icons-outlined"> point_of_sale </span>
                 </div>
-                     <h1 class="transaction-count">249</h1>
+                     <h1 class="transaction-count">0</h1>
                      <a class="small text-white stretched-link" href="Transaction.php">View Details</a> 
             </div>
 

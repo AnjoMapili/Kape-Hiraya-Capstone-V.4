@@ -17,12 +17,18 @@ $(document).on("submit", "#addCustomer", function (e) {
         $("#errorMessage").removeClass("d-none");
         $("#errorMessage").text(res.message);
       } else if (res.status == 200) {
-        $("#errorMessage").addClass("d-none");
-        $("#completeModal").modal("hide");
-        $("#addCustomer")[0].reset();
-        alertify.set("notifier", "position", "top-right");
-        alertify.success(res.message);
-        $("#myTable").load(location.href + " #myTable");
+        // Render Customers Table
+
+        setTimeout(() => {
+          location.reload();
+
+          $("#errorMessage").addClass("d-none");
+          $("#completeModal").modal("hide");
+          $("#addCustomer")[0].reset();
+          alertify.set("notifier", "position", "top-right");
+          alertify.success(res.message);
+          $("#myTable").load(location.href + " #myTable");
+        }, 1000);
       }
     },
   });

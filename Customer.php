@@ -6,6 +6,8 @@ include "Connections/dbconnect.php";
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet" />
       <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/> 
+<link href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="CSS/transaction.css" />
 <div class="grid-container"> 
     <?php
         include "templates/header.php";
@@ -161,6 +163,24 @@ include "Connections/dbconnect.php";
 
 </button>
 
+<div class="my-3 p-3 shadow-sm tbl-container">
+  <table id="tbl-customers" class="display tbl-transactions" style="width:100%">
+      <thead>
+        <tr>
+          <th class="text-center">ID</th>
+          <th class="text-center">Name</th>
+          <th class="text-center">Email</th>
+          <th class="text-center">Contact</th>
+          <th class="text-center">Address</th>
+          <th class="text-center">Date</th>
+          <th class="text-center">Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+  </table>
+</div>
+
 <div class="card-body my-3">
   <table id="myTable" class="table fs-5 text-white">
     <thead class="thead text-primary fs-4">
@@ -218,8 +238,10 @@ include "Connections/dbconnect.php";
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 
 <script src="JS/adduser.js"></script>
+<script src="JS/customer.js"></script>
 
 
       

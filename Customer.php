@@ -151,7 +151,7 @@ include "Connections/dbconnect.php";
     
 
   <div class="container-fluid px-4">
-    <h2 class="mt-4">CUSTOMERS LIST</h2>
+    <h2 class="mt-4">CUSTOMERS LIST | Sample Data</h2>
    
   
 

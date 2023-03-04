@@ -12,7 +12,43 @@ var isPrinting = false;
 $(document).ready(function () {
   transactions();
 
+  $(document).on("change", ".sel-customer-name", function () {
+    var address = $(this).find("option:selected").data("address");
+    var contact = $(this).find("option:selected").data("contact");
+
+    $(".txt-address").val(address);
+    $(".txt-contact-number").val(contact);
+
+    reset();
+    itemsCollection = [];
+
+    $(".sel-flavor-item").val("--select--");
+    $(".sel-roast-item").val("--select--");
+    $(".sel-grind-item").val("--select--");
+    $(".txt-quantity").val("");
+    $(".sel-measurement").val("--select--");
+    $(".txt-price").val("");
+
+    listOfItemsCollection();
+  });
+
   $(document).on("click", ".btn-create-sales", function () {
+    reset();
+    itemsCollection = [];
+    $(".sel-payment-method").val("--select--");
+    $(".sel-customer-name").val("--select--");
+    $(".txt-address").val("");
+    $(".txt-contact-number").val("");
+
+    $(".sel-flavor-item").val("--select--");
+    $(".sel-roast-item").val("--select--");
+    $(".sel-grind-item").val("--select--");
+    $(".txt-quantity").val("");
+    $(".sel-measurement").val("--select--");
+    $(".txt-price").val("");
+
+    listOfItemsCollection();
+
     $("#TransactionModal").modal({
       backdrop: "static",
       keyboard: false,
@@ -43,14 +79,6 @@ $(document).ready(function () {
     calculation();
   });
 
-  $(document).on("change", ".customer-name", function () {
-    var address = $(this).find("option:selected").data("address");
-    var contact = $(this).find("option:selected").data("contact");
-
-    $(".txt-address").val(address);
-    $(".txt-contact-number").val(contact);
-  });
-
   $(document).on("click", ".add-more-item", function () {
     var selFlavorItem = $(".sel-flavor-item").val();
     var selRoastItem = $(".sel-roast-item").val();
@@ -60,12 +88,12 @@ $(document).ready(function () {
     var txtPrice = $(".txt-price").val();
 
     if (
-      selFlavorItem === "" ||
-      selRoastItem === "" ||
-      selGrindItem === "" ||
-      txtQuantity === "" ||
-      selMeasurement === "" ||
-      txtPrice === ""
+      !selFlavorItem ||
+      !selRoastItem ||
+      !selGrindItem ||
+      !txtQuantity ||
+      !selMeasurement ||
+      !txtPrice
     ) {
       alertify.set("notifier", "position", "top-right");
       alertify.error("Please fill out all fields.");
@@ -102,10 +130,11 @@ $(document).ready(function () {
     var customer_contact_number = $(".txt-contact-number").val();
 
     if (
-      customer_payment_method === "" ||
-      customer_name === "" ||
-      customer_address === "" ||
-      customer_contact_number === ""
+      !customer_payment_method ||
+      !customer_name ||
+      !customer_address ||
+      !customer_contact_number ||
+      itemsCollection.length <= 0
     ) {
       alertify.set("notifier", "position", "top-right");
       alertify.error("Please fill out all fields.");
@@ -153,9 +182,6 @@ $(document).ready(function () {
   $(document).on("click", ".btn-close-mdl", function () {
     $("#TransactionModal").modal("hide");
     $("#mdl-view-details").modal("hide");
-
-    reset();
-    itemsCollection = [];
   });
 
   $(document).on("click", ".btn-close-print-mdl", function () {
@@ -227,7 +253,7 @@ $(document).ready(function () {
 
           setTimeout(() => {
             location.reload();
-          }, 1000);
+          }, 5000);
         }
       },
       error: function (jqXHR, textStatus, errorThrown) {
@@ -343,20 +369,26 @@ function detailedTransaction(trans_no) {
 
 function listOfItemsCollection() {
   var html = "";
-  $.each(itemsCollection, function (k, v) {
-    html += "<tr class='tr-" + k + "'>";
-    html += "   <td>" + v.selFlavorItem + "</td>";
-    html += "   <td>" + v.selRoastItem + "</td>";
-    html += "   <td>" + v.selGrindItem + "</td>";
-    html += "   <td class='text-center'>" + v.txtQuantity + "</td>";
-    html += "   <td class='text-center'>" + v.selMeasurement + "</td>";
-    html += "   <td class='text-end'>" + formatCurrency(v.txtPrice) + "</td>";
+
+  if (itemsCollection.length <= 0) {
     html +=
-      "   <td class='text-center'><span class='material-icons-outlined spn-trash-collection' title='Delete item' data-index='" +
-      k +
-      "'>delete</span></td>";
-    html += "</td>";
-  });
+      '<tr><td colspan="7" class="text-center">No items available.</td></tr>';
+  } else {
+    $.each(itemsCollection, function (k, v) {
+      html += "<tr class='tr-" + k + "'>";
+      html += "   <td>" + v.selFlavorItem + "</td>";
+      html += "   <td>" + v.selRoastItem + "</td>";
+      html += "   <td>" + v.selGrindItem + "</td>";
+      html += "   <td class='text-center'>" + v.txtQuantity + "</td>";
+      html += "   <td class='text-center'>" + v.selMeasurement + "</td>";
+      html += "   <td class='text-end'>" + formatCurrency(v.txtPrice) + "</td>";
+      html +=
+        "   <td class='text-center'><span class='material-icons-outlined spn-trash-collection' title='Delete item' data-index='" +
+        k +
+        "'>delete</span></td>";
+      html += "</td>";
+    });
+  }
 
   $("#tbl-items > tbody").html(html);
   getTotalQuantity();
@@ -438,6 +470,7 @@ function transactions() {
       }
 
       $("#tbl-transactions").DataTable({
+        ordering: false,
         scrollX: true,
       });
     },

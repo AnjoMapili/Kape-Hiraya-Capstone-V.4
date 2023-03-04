@@ -88,7 +88,7 @@ class TransactionController
             COUNT(1) as total_quantity,
             SUM(t.item_price) as total_price
             FROM transactions as t
-            GROUP BY t.transaction_number";
+            GROUP BY t.transaction_number ORDER BY t.id DESC";
       }
 
       $result = $this->connection->query($sql);
@@ -118,7 +118,7 @@ class TransactionController
       }
    }
 
-   public function numberOfTransaction() {
+   public function numberOfTransaction()  {
       $sql = "SELECT * FROM transactions";
       $result = $this->connection->query($sql);
       return $result->num_rows;

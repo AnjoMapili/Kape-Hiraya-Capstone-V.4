@@ -22,7 +22,16 @@ function customers() {
           html += '<td class="text-center">' + v.contact + "</td>";
           html += '<td class="text-center">' + v.address + "</td>";
           html += '<td class="text-center">' + v.date + "</td>";
-          html += "<td>--</td>";
+          html += '<td class="text-center">';
+          html +=
+            '<span class="material-icons-outlined spn-view-transaction" title="View transaction" data-transno="' +
+            v.transaction_number +
+            '">search</span>';
+          html +=
+            '<span class="material-icons-outlined spn-trash-transaction" title="Delete transaction" data-transno="' +
+            v.transaction_number +
+            '">delete</span>';
+          html += "</td>";
           html += "</tr>";
         });
 

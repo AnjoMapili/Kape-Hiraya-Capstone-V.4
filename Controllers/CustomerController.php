@@ -43,5 +43,5 @@ class CustomerController
    {
       header('Content-Type: application/json');
       return json_encode($data);
-   }
+   } 
 }

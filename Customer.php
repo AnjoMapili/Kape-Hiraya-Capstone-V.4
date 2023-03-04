@@ -181,52 +181,9 @@ include "Connections/dbconnect.php";
   </table>
 </div>
 
-<div class="card-body my-3">
-  <table id="myTable" class="table fs-5 text-white">
-    <thead class="thead text-primary fs-4">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Contact</th>
-        <th>Address</th>
-        <th>Date</th>
-        <th>Operation</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-       $sql="SELECT * FROM `customers`";
-       $result=mysqli_query($con,$sql);
-       if(mysqli_num_rows($result) > 0){
-          foreach($result as $customer){
-            ?>
-               <tr>
-        <td><?=$customer['id'] ?></td>
-        <td><?=$customer['name'] ?></td>
-        <td><?=$customer['email'] ?></td>
-        <td><?=$customer['contact'] ?></td>
-        <td><?=$customer['address'] ?></td>
-        <td><?=$customer['date'] ?></td>
-        <td>
-          
-          
-          <button type="button" id="getData" dataid="<?=$customer['id']?>"  class="updateBtn btn btn-primary" data-bs-toggle="modal" data-bs-target="#UpdateModal">Edit</button>
-        
-          <button type="button"id="getData" delete_id="<?=$customer['id']?>" class="delteBtn btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-          Delete
-</button>
-        </td>
-      </tr>
-            <?php
-          }
-       }
-       
-      ?>
 
-      
-    </tbody>
+    </thead>
+  
   </table>
 </div>
 </main>

@@ -70,7 +70,7 @@ include "Connections/dbconnect.php";
                         <div class="col-md-12">
                            <label for="inputPayment" class="form-label">Payment Method</label>
                            <select name="payment" class="form-select form-select-lg mb-3 sel-payment-method" aria-label=".form-select-lg example">
-                              <option selected>--Select--</option>
+                              <option disabled selected>--select--</option>
                               <option value="Cash">Cash</option>
                               <option value="Gcash">Gcash</option>
 
@@ -98,12 +98,12 @@ include "Connections/dbconnect.php";
                         </div>
                         <div class="col-md-4">
                            <label for="inputEmail4" class="form-label">Address</label>
-                           <input type="email" class="form-control txt-address" id="inputEmail4" placeholder="Enter your address">
+                           <input type="email" class="form-control txt-address" readonly id="inputEmail4" placeholder="Enter your address">
                         </div>
 
                         <div class="col-md-4 mb-4">
                            <label for="inputAddress" class="form-label">Contact #</label>
-                           <input type="text" class="form-control txt-contact-number" id="inputAddress" placeholder="Enter your contact number">
+                           <input type="text" class="form-control txt-contact-number" readonly id="inputAddress" placeholder="Enter your contact number">
                         </div>
                         <hr style="height:1px;border-width:0;color:black;background-color:black;margin-top:20px;margin-bottom:40px;">
                         <div class="col-12">
@@ -185,10 +185,11 @@ include "Connections/dbconnect.php";
                                     <div class="mb-2"> Grams</div>
                                     <?php
                                     $selected = "--select--";
-                                    $options = array('--select--', '250G', '500G', '1KG');
+                                    $options = array('','250G', '500G', '1KG');
 
 
                                     echo "<select name='grams' class='sel-measurement form-control fs-5' aria-label='Default select example'>";
+                                    echo"<option disabled selected>--select--</option";
                                     foreach ($options as $option) {
                                        if ($selected == $option) {
                                           echo "<option selected = 'selected' value='$option'>$option</option>";
@@ -236,7 +237,10 @@ include "Connections/dbconnect.php";
             </div>
          </div>
 
-         <div class="modal fade" id="mdl-view-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        
+   </main>
+
+   <div class="modal fade" id="mdl-view-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                <div class="modal-content ">
                   <div class="modal-header" style="color:black;">
@@ -292,7 +296,6 @@ include "Connections/dbconnect.php";
                </div>
             </div>
          </div>
-   </main>
    <!-- End Main -->
 
 </div>
